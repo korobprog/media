@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  position: relative;
+}
+
+.tiket-pad {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  background-color: aqua;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 100px;
+  padding-bottom: 20px;
+  padding-top: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+}
+
+.name {
+  width: 410px;
+}
+.status {
+  margin-left: 8px;
+}
+.tiket {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  border: 1px solid black;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  border-radius: 6px;
+  font-size: small;
+}
+
+.add-tiket {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  width: 20%;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 50%;
+}
+.control-element {
+  display: flex;
+  align-items: center;
+}
+.correct,
+.delete {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin-right: 15px;
+}
+
+.create-tiket {
+  position: absolute;
+  background-color: antiquewhite;
+  width: 200px;
+  font-size: smaller;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid black;
+  left: 30%;
+}
+.headerCreate-tiket {
+  text-align: center;
+}
+.fullDescriptionName {
+  resize: vertical;
+}
+
+.cancelDescription,
+.submitDescription,
+.cancelCorrectDescription,
+.submitCorrectDescription {
+  min-width: 40%;
+  border-radius: 5px;
+}
+
+.delete-tiket {
+  position: absolute;
+  text-align: center;
+  background-color: antiquewhite;
+  width: 250px;
+  font-size: large;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid black;
+  left: 30%;
+}
+
+.cancelDelete,
+.submitDelete {
+  min-width: 40%;
+  border-radius: 5px;
+}
+
+.fullDes{
+position: relative;
+background-color: bisque;
+border-radius: 10px;
+border: 1px solid black;
+width: 98%;
+padding: 5px;
+text-align: start;
+font-size: small;
+}
