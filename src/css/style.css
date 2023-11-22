@@ -155,7 +155,7 @@ body {
 }
 
 .ready {
-  background-image: url(../img/checkmark.png);
+  background-image: url(../img//checkmark.png);
   background-position: center;
   background-size: contain;
 }
