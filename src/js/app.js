@@ -1,7 +1,4 @@
-import HelpDesk from './HelpDesk';
+import WidgetTimeLine from "./widgetTimeLine";
 
-const root = document.getElementById('root');
-
-const app = new HelpDesk(root);
-
-app.init();
+const widgetTimeLine = new WidgetTimeLine();
+widgetTimeLine.init();
