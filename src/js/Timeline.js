@@ -74,4 +74,25 @@ export default class Timeline {
          }
       }, 3000);
    }
+   getManualPosition() {
+      this.askPosition.querySelector('#ask-input').addEventListener('input', () => {
+         if (document.querySelector('.invalid-message')) {
+            this.invalidMessage.remove();
+         }
+      });
+      this.askPosition.querySelector('.ok-btn').onclick = (evt) => {
+         evt.preventDefault();
+         const coords = this.askPosition.querySelector('#ask-input').value;
+         if (this.verifyCoords(coords)) {
+            this.askPosition.remove();
+            this.createTextMessage(this.text, this.position.latitude, this.position.longitude);
+         } else {
+            this.askPosition.appendChild(this.invalidMessage);
+         }
+      };
+      this.askPosition.querySelector('.cancel-btn').addEventListener('click', (evt) => {
+         evt.preventDefault();
+         this.askPosition.remove();
+      });
+   }
 }
