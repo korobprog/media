@@ -109,4 +109,22 @@ export default class Timeline {
          return true;
       } return false;
    }
+   recorderTimer(element) {
+      let minutes = 0;
+      let seconds = 0;
+      setInterval(() => {
+         seconds += 1;
+         if (seconds === 60) {
+            minutes += 1;
+            seconds = 0;
+         }
+         if (seconds < 10) {
+            // eslint-disable-next-line no-param-reassign
+            element.innerText = `${minutes}:0${seconds}`;
+            return;
+         }
+         // eslint-disable-next-line no-param-reassign
+         element.innerText = `${minutes}:${seconds}`;
+      }, 1000);
+   }
 }
