@@ -52,4 +52,11 @@ export default class Timeline {
             longtitude: position.coords.longitude,
          }), () => this.position = null);
    }
+   createTextMessage(text, latitude, longtitude) {
+      const message = document.createElement('div');
+      message.classList.add('message');
+      message.innerHTML = `<div class = 'message-header'> ${new Date().toLocaleDateString()}, ${new Date().toLocaleTimeString()} </div> <div class = 'message-text'> ${text} </div> <div class = 'position'> 📍 ${latitude}, ${longtitude} </div>`;
+      this.container.appendChild(message);
+      document.querySelector('#message-input').value = '';
+   }
 }
