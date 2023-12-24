@@ -127,4 +127,83 @@ export default class Timeline {
          element.innerText = `${minutes}:${seconds}`;
       }, 1000);
    }
+   async createAudio() {
+      if (!navigator.mediaDevices) {
+         this.noAudio.style.display = 'block';
+      }
+      try {
+         this.stream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+            video: false,
+         });
+      } catch (e) {
+         this.noAudio.style.display = 'block';
+         return;
+      }
+      this.audioRecorder = document.createElement('div');
+      this.audioRecorder.classList.add('audio-recorder');
+      this.audioRecorder.innerHTML = '<div class = \'save-record\'> </div> <div class = \'record-timer\'> 0:00 </div> <div class = \'cancel-record\'></div>';
+      const recorder = new MediaRecorder(this.stream);
+      this.chunks = [];
+      recorder.addEventListener('start', () => {
+         this.messageForm.appendChild(this.audioRecorder);
+         this.recorderTimer(document.querySelector('.record-timer'));
+      });
+      recorder.addEventListener('dataavailable', (evt) => {
+         this.chunks.push(evt.data);
+      });
+      recorder.addEventListener('stop', () => {
+         this.sourse = URL.createObjectURL(this.chunks[0]);
+         const text = `<audio controls src = '${this.sourse}'> </audio>`;
+         this.getPosition();
+         setTimeout(() => {
+            this.createTextMessage(text, this.position.latitude, this.position.longtitude);
+         }, 4000);
+      });
+      recorder.start();
+      this.audioRecorder.querySelector('.save-record').addEventListener('click', () => {
+         this.audioRecorder.remove();
+         recorder.stop();
+      });
+   }
+
+   async createVideo() {
+      if (!navigator.mediaDevices) {
+         this.noAudio.style.display = 'block';
+      }
+      try {
+         this.stream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+            video: true,
+         });
+      } catch (e) {
+         this.noAudio.style.display = 'block';
+         return;
+      }
+      this.audioRecorder = document.createElement('div');
+      this.audioRecorder.classList.add('audio-recorder');
+      this.audioRecorder.innerHTML = '<div class = \'save-record\'> </div> <div class = \'record-timer\'> 0:00 </div> <div class = \'cancel-record\'></div>';
+      const recorder = new MediaRecorder(this.stream);
+      this.chunks = [];
+      recorder.addEventListener('start', () => {
+         this.messageForm.appendChild(this.audioRecorder);
+         this.recorderTimer(document.querySelector('.record-timer'));
+      });
+      recorder.addEventListener('dataavailable', (evt) => {
+         this.chunks.push(evt.data);
+      });
+      recorder.addEventListener('stop', () => {
+         this.sourse = URL.createObjectURL(this.chunks[0]);
+         const text = `<video width = '300' height = '200' controls src = '${this.sourse}'> </video>`;
+         this.getPosition();
+         setTimeout(() => {
+            this.createTextMessage(text, this.position.latitude, this.position.longtitude);
+         }, 4000);
+      });
+      recorder.start();
+      this.audioRecorder.querySelector('.save-record').addEventListener('click', () => {
+         this.audioRecorder.remove();
+         recorder.stop();
+      });
+   }
 }
