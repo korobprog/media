@@ -95,4 +95,18 @@ export default class Timeline {
          this.askPosition.remove();
       });
    }
+   verifyCoords(coords) {
+      if (/^\[([-+]?)([\d]{1,2})(((\.)(\d+)(,)))(\s*)(([-+]?)([\d]{1,3})((\.)(\d+))?)\]$/.test(coords)
+         || /^([-+]?)([\d]{1,2})(((\.)(\d+)(,)))(\s*)(([-+]?)([\d]{1,3})((\.)(\d+))?)$/.test(coords)) {
+         let coordinates = coords.replace('[', '');
+         coordinates = coordinates.split(',');
+         // eslint-disable-next-line no-console
+         this.position = {
+            latitude: Number.parseFloat(coordinates[0]),
+            longitude: Number.parseFloat(coordinates[1]),
+         };
+
+         return true;
+      } return false;
+   }
 }
