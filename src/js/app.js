@@ -1,4 +1,4 @@
-import WidgetTimeLine from "./widgetTimeLine";
+import Timeline from "./Timeline";
 
-const widgetTimeLine = new WidgetTimeLine();
+const widgetTimeLine = new Timeline();
 widgetTimeLine.init();
