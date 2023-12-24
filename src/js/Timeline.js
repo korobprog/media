@@ -59,4 +59,19 @@ export default class Timeline {
       this.container.appendChild(message);
       document.querySelector('#message-input').value = '';
    }
+   publishTextMessage() {
+      this.getPosition();
+      setTimeout(() => {
+         this.text = document.querySelector('#message-input').value;
+         if (!this.text) {
+            return;
+         }
+         if (this.position) {
+            this.createTextMessage(this.text, this.position.latitude, this.position.longtitude);
+         } else {
+            this.timeline.appendChild(this.askPosition);
+            this.getManualPosition();
+         }
+      }, 3000);
+   }
 }
