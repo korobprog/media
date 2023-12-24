@@ -45,4 +45,11 @@ export default class Timeline {
             this.createVideo();
          });
    }
+   getPosition() {
+      navigator.geolocation.getCurrentPosition((position) => (
+         this.position = {
+            latitude: position.coords.latitude,
+            longtitude: position.coords.longitude,
+         }), () => this.position = null);
+   }
 }
